@@ -10,13 +10,9 @@ public class NumberSchema extends BaseSchema {
     public boolean isValid(Object data) {
         if (!requiredRule && data == null) {
             return true;
-        } else if (((positiveRule && (int) data < 0))
-            || (requiredRule && data == null)
-            || (rangeRule && ((int) data < min || (int) data > max))) {
-            return false;
-        } else {
-            return true;
-        }
+        } else return ((!positiveRule || (int) data >= 0))
+            && (!requiredRule || data != null)
+            && (!rangeRule || ((int) data >= min && (int) data <= max));
     }
     public NumberSchema required() {
         this.requiredRule = true;

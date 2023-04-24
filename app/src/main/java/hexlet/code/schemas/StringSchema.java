@@ -10,12 +10,9 @@ public class StringSchema extends BaseSchema {
     @Override
     public boolean isValid(Object data) {
         String stringData = (String) data;
-        if (requiredRule && (data == null || data.equals(""))
-        || (minLengthRule && stringData.length() < minLength)
-        || (containsRule && !stringData.contains(containsString))) {
-            return false;
-        }
-        return true;
+        return (!requiredRule || (data != null && !data.equals("")))
+            && (!minLengthRule || stringData.length() >= minLength)
+            && (!containsRule || stringData.contains(containsString));
     }
     public StringSchema required() {
         this.requiredRule = true;
