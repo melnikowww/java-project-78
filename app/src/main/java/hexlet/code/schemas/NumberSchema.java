@@ -8,16 +8,17 @@ public class NumberSchema extends BaseSchema {
     private int max;
     @Override
     public boolean isValid(Object data) {
+        boolean result = true;
         if (!requiredRule && data == null) {
             return true;
         } else if (requiredRule && data == null) {
-            return false;
+            result = false;
         } else if (positiveRule && (int) data < 0) {
-            return false;
+            result = false;
         } else if (rangeRule && ((int) data < min || (int) data > max)) {
-            return false;
+            result = false;
         }
-        return true;
+        return result;
     }
     public NumberSchema required() {
         this.requiredRule = true;
