@@ -14,11 +14,12 @@ public class NumberSchema extends BaseSchema {
         } else if (isRequired && data == null) {
             return false;
         }
+        int intData = (int) data;
         if (isPositive) {
-            result = ((int) data > 0);
+            result = (intData > 0);
         }
         if (isInRange) {
-            result = ((int) data > min & (int) data < max);
+            result = (intData > min & intData < max);
         }
         return result;
     }
