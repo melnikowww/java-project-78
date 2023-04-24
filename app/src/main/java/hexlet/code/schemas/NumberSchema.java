@@ -14,7 +14,7 @@ public class NumberSchema extends BaseSchema {
         } else if (isRequired && data == null) {
             return false;
         }
-        int intData = (int) data;
+        int intData = Integer.parseInt(data.toString());
         if (isPositive) {
             result = (intData > 0);
         }
