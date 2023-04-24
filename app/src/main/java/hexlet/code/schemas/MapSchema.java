@@ -2,7 +2,7 @@ package hexlet.code.schemas;
 
 import java.util.Map;
 
-public class MapSchema extends BaseSchema{
+public class MapSchema extends BaseSchema {
     private boolean requiredRule;
     private boolean sizeofRule;
     private int size;
@@ -21,9 +21,9 @@ public class MapSchema extends BaseSchema{
         this.requiredRule = true;
         return this;
     }
-    public MapSchema sizeof(int size) {
+    public MapSchema sizeof(int sizeRule) {
         this.sizeofRule = true;
-        this.size = size;
+        this.size = sizeRule;
         return this;
     }
 }
