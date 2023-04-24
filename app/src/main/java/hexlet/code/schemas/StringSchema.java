@@ -1,21 +1,21 @@
-package hexlet.code;
+package hexlet.code.schemas;
 
-public class StringSchema implements Schema {
+
+public class StringSchema extends BaseSchema {
     private boolean requiredRule = false;
     private boolean minLengthRule = false;
     private int minLength = -1;
     private boolean containsRule = false;
     private String containsString;
-    public boolean isValid(String data) {
-        boolean result = true;
-        if (requiredRule && (data == null || data.equals(""))) {
-            result = false;
-        } else if (minLengthRule && data.length() < minLength) {
-            result = false;
-        } else if (containsRule && !data.contains(containsString)) {
-            result = false;
+    @Override
+    public boolean isValid(Object data) {
+        String stringData = (String) data;
+        if (requiredRule && (data == null || data.equals(""))
+        || (minLengthRule && stringData.length() < minLength)
+        || (containsRule && !stringData.contains(containsString))) {
+            return false;
         }
-        return result;
+        return true;
     }
     public StringSchema required() {
         this.requiredRule = true;
