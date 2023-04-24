@@ -14,29 +14,23 @@ public class StringSchemaTests {
         schema = validator.string();
     }
     @Test
-    public void withoutRules() {
+    public void StringSchemaTest() {
         assertThat(schema.isValid("")).isEqualTo(true);
         assertThat(schema.isValid(null)).isEqualTo(true);
-    }
-    @Test
-    public void withRules() {
         schema.required();
         assertThat(schema.isValid(null)).isEqualTo(false);
         assertThat(schema.isValid("")).isEqualTo(false);
         assertThat(schema.isValid("what does the fox say")).isEqualTo(true);
-    }
-    @Test
-    public void containsTest() {
+        makeSchema();
         assertThat(schema.contains("wh").isValid("what does the fox say"))
             .isEqualTo(true);
         assertThat(schema.contains("whattt").isValid("what does the fox say"))
             .isEqualTo(false);
-    }
-    @Test
-    public void minLengthTest() {
+        makeSchema();
         assertThat(schema.minLength(1).isValid("what does the fox say"))
             .isEqualTo(true);
         assertThat(schema.minLength(100).isValid("what does the fox say"))
             .isEqualTo(false);
+
     }
 }

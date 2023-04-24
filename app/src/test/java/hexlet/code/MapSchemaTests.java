@@ -19,11 +19,10 @@ public class MapSchemaTests {
         this.schema = validator.map();
     }
     @Test
-    public void withoutRules() {
+    public void MapSchemaTest() {
         assertThat(schema.isValid(null)).isTrue();
-    }
-    @Test
-    public void withRules() {
+
+        makeSchema();
         schema.required();
         assertThat(schema.isValid(null)).isFalse();
         assertThat(schema.isValid(new HashMap())).isTrue();
@@ -34,9 +33,8 @@ public class MapSchemaTests {
         assertThat(schema.isValid(data)).isFalse();
         data.put("key2", "value2");
         assertThat(schema.isValid(data)).isTrue();
-    }
-    @Test
-    public void kvValidation() {
+
+        makeSchema();
         Map<String, BaseSchema> schemas = new HashMap<>();
 
         schemas.put("name", validator.string().required());

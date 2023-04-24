@@ -15,17 +15,15 @@ public class NumberSchemaTests {
         this.schema = validator.number();
     }
     @Test
-    public void withoutRules() {
+    public void NumberSchemaTest() {
         assertThat(schema.isValid(null)).isTrue();
         assertThat(schema.positive().isValid(null)).isTrue();
-    }
-    @Test
-    public void withRules() {
+        makeSchema();
         assertThat(schema.required().isValid(null)).isFalse();
         assertThat(schema.isValid(10)).isTrue();
         assertThat(schema.positive().isValid(-10)).isFalse();
         assertThat(schema.range(5, 10).isValid(7)).isTrue();
-        assertThat(schema.range(0, 10).isValid(11)).isFalse();
+        assertThat(schema.range(0, 10).isValid(12)).isFalse();
         assertThat(schema.isValid(-2)).isFalse();
     }
 }
