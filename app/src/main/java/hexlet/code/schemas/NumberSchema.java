@@ -12,7 +12,7 @@ public class NumberSchema extends BaseSchema {
             return true;
         } else if (requiredRule && data == null) {
             return false;
-        } else if (positiveRule && (int) data >= 0) {
+        } else if (positiveRule && (int) data < 0) {
             return false;
         } else if (rangeRule && ((int) data < min || (int) data > max)) {
             return false;
