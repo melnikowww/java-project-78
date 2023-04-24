@@ -12,7 +12,7 @@ public class NumberSchema extends BaseSchema {
         if (!isRequired && data == null) {
             return true;
         } else if (isRequired && data == null) {
-            result = false;
+            return false;
         }
         if (isPositive) {
             result = ((int) data > 0);
