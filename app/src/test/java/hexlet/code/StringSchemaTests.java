@@ -14,7 +14,7 @@ public class StringSchemaTests {
         schema = validator.string();
     }
     @Test
-    public void StringSchemaTest() {
+    public void stringSchemaTest() {
         assertThat(schema.isValid("")).isEqualTo(true);
         assertThat(schema.isValid(null)).isEqualTo(true);
         schema.required();

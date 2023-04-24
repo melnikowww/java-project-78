@@ -15,7 +15,7 @@ public class NumberSchemaTests {
         this.schema = validator.number();
     }
     @Test
-    public void NumberSchemaTest() {
+    public void numberSchemaTest() {
         assertThat(schema.isValid(null)).isTrue();
         assertThat(schema.positive().isValid(null)).isTrue();
         makeSchema();

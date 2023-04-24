@@ -19,7 +19,7 @@ public class MapSchemaTests {
         this.schema = validator.map();
     }
     @Test
-    public void MapSchemaTest() {
+    public void mapSchemaTest() {
         assertThat(schema.isValid(null)).isTrue();
 
         makeSchema();
