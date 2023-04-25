@@ -2,11 +2,12 @@ package hexlet.code.schemas;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
+
 
 public class MapSchema extends BaseSchema {
     private boolean isRequired;
     private boolean isSizeOf;
+    private boolean isValueValid;
     private int size;
     private Map<String, BaseSchema> mapWithRules = new HashMap<>();
     @Override
@@ -19,9 +20,8 @@ public class MapSchema extends BaseSchema {
         if (isSizeOf) {
             result = (map.size() == this.size);
         }
-        if (!mapWithRules.isEmpty()) {
-            Set<String> keys = map.keySet();
-            for (String key: keys) {
+        if (isValueValid) {
+            for (String key: map.keySet()) {
                 if (!mapWithRules.get(key).isValid(map.get(key))) {
                     result = false;
                 }
@@ -39,6 +39,7 @@ public class MapSchema extends BaseSchema {
         return this;
     }
     public final void shape(Map<String, BaseSchema> rulesMap) {
+        this.isValueValid = true;
         this.mapWithRules = rulesMap;
     }
 }
