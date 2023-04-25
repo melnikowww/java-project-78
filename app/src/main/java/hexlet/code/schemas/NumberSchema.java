@@ -22,6 +22,15 @@ public class NumberSchema extends BaseSchema {
         } catch (NullPointerException exception) {
             return result;
         }
+        catch (ClassCastException exception) {
+            int intData = Integer.parseInt(data.toString());
+            if (isPositive) {
+                result = (intData > 0);
+            }
+            if (isInRange) {
+                result = (intData > min & intData < max);
+            }
+        }
         return result;
     }
     public NumberSchema required() {
