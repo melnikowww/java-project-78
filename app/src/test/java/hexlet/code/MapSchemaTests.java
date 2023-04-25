@@ -14,7 +14,7 @@ public class MapSchemaTests {
     private Validator validator;
     private MapSchema schema;
     @BeforeEach
-    public void makeSchema() {
+    public final void makeSchema() {
         this.validator = new Validator();
         this.schema = validator.map();
     }

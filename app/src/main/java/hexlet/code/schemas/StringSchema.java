@@ -8,7 +8,7 @@ public class StringSchema extends BaseSchema {
     private boolean isContained = false;
     private String containsString;
     @Override
-    public boolean isValid(Object data) {
+    public final boolean isValid(Object data) {
         String stringData = (String) data;
         boolean result = true;
         if (isRequired) {
@@ -22,16 +22,16 @@ public class StringSchema extends BaseSchema {
         }
         return result;
     }
-    public StringSchema required() {
+    public final StringSchema required() {
         this.isRequired = true;
         return this;
     }
-    public StringSchema minLength(int length) {
+    public final StringSchema minLength(int length) {
         this.isMinLength = true;
         this.minLength = length;
         return this;
     }
-    public StringSchema contains(String data) {
+    public final StringSchema contains(String data) {
         this.isContained = true;
         this.containsString = data;
         return this;

@@ -7,7 +7,7 @@ public class NumberSchema extends BaseSchema {
     private int min;
     private int max;
     @Override
-    public boolean isValid(Object data) {
+    public final boolean isValid(Object data) {
         boolean result = true;
         try {
             if (isRequired) {
@@ -27,15 +27,15 @@ public class NumberSchema extends BaseSchema {
         }
         return result;
     }
-    public NumberSchema required() {
+    public final NumberSchema required() {
         this.isRequired = true;
         return this;
     }
-    public NumberSchema positive() {
+    public final NumberSchema positive() {
         this.isPositive = true;
         return this;
     }
-    public NumberSchema range(int a1, int a2) {
+    public final NumberSchema range(int a1, int a2) {
         this.isInRange = true;
         this.min = a1;
         this.max = a2;

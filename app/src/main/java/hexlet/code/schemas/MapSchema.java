@@ -10,7 +10,7 @@ public class MapSchema extends BaseSchema {
     private int size;
     private Map<String, BaseSchema> mapWithRules = new HashMap<>();
     @Override
-    public boolean isValid(Object data) {
+    public final boolean isValid(Object data) {
         boolean result = true;
         Map<String, Object> map = (Map<String, Object>) data;
         if (isRequired) {
@@ -29,16 +29,16 @@ public class MapSchema extends BaseSchema {
         }
         return result;
     }
-    public MapSchema required() {
+    public final MapSchema required() {
         this.isRequired = true;
         return this;
     }
-    public MapSchema sizeof(int sizeRule) {
+    public final MapSchema sizeof(int sizeRule) {
         this.isSizeOf = true;
         this.size = sizeRule;
         return this;
     }
-    public void shape(Map<String, BaseSchema> rulesMap) {
+    public final void shape(Map<String, BaseSchema> rulesMap) {
         this.mapWithRules = rulesMap;
     }
 }

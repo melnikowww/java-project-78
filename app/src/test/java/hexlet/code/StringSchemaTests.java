@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringSchemaTests {
-    public Validator validator;
-    public StringSchema schema;
+    private Validator validator;
+    private StringSchema schema;
     @BeforeEach
-    public void makeSchema() {
+    public final void makeSchema() {
         validator = new Validator();
         schema = validator.string();
     }

@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class NumberSchemaTests {
-    public Validator validator;
-    public NumberSchema schema;
+    private Validator validator;
+    private NumberSchema schema;
     @BeforeEach
-    public void makeSchema() {
+    public final void makeSchema() {
         this.validator = new Validator();
         this.schema = validator.number();
     }
@@ -25,5 +25,6 @@ public class NumberSchemaTests {
         assertThat(schema.range(5, 10).isValid(10)).isTrue();
         assertThat(schema.range(0, 10).isValid(12)).isFalse();
         assertThat(schema.isValid(-2)).isFalse();
+        assertThat(schema.isValid("2")).isFalse();
     }
 }
