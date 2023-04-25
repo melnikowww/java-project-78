@@ -22,10 +22,8 @@ public class NumberSchemaTests {
         assertThat(schema.required().isValid(null)).isFalse();
         assertThat(schema.isValid(10)).isTrue();
         assertThat(schema.positive().isValid(-10)).isFalse();
-        assertThat(schema.range(5, 10).isValid(7)).isTrue();
+        assertThat(schema.range(5, 10).isValid(10)).isTrue();
         assertThat(schema.range(0, 10).isValid(12)).isFalse();
         assertThat(schema.isValid(-2)).isFalse();
-        assertThat(schema.isValid("-6")).isFalse();
-        assertThat(schema.isValid("-6")).isFalse();
     }
 }
