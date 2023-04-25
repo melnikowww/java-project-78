@@ -8,13 +8,14 @@ public class NumberSchema extends BaseSchema {
     public boolean isValid(Object data) {
         boolean result = true;
         try {
-            result = super.isValid(data);
+            return super.isValid(data);
         } catch (NullPointerException exception) {
+            System.out.println("NPE");
             return result;
         } catch (ClassCastException exception) {
+            System.out.println("ClassCastException");
             return false;
         }
-        return result;
     }
     public final NumberSchema required() {
         addCheck("required",
