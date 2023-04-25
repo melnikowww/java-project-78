@@ -22,6 +22,8 @@ public class NumberSchema extends BaseSchema {
             }
         } catch (NullPointerException exception) {
             return result;
+        } catch (ClassCastException exception) {
+            return false;
         }
         return result;
     }
