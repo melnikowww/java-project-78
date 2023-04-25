@@ -9,17 +9,18 @@ public class NumberSchema extends BaseSchema {
     @Override
     public boolean isValid(Object data) {
         boolean result = true;
-        if (!isRequired && data == null) {
+        try {
+            if (isRequired) {
+                result = !(data == null);
+            }
+            if (isPositive) {
+                result = ((int) data > 0);
+            }
+            if (isInRange) {
+                result = ((int) data > min & (int) data < max);
+            }
+        } catch (NullPointerException exception) {
             return true;
-        } else if (isRequired && data == null) {
-            return false;
-        }
-        int intData = Integer.parseInt(data.toString());
-        if (isPositive) {
-            result = (intData > 0);
-        }
-        if (isInRange) {
-            result = (intData > min & intData < max);
         }
         return result;
     }
