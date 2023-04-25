@@ -18,20 +18,17 @@ public class NumberSchema extends BaseSchema {
                 result = (intData > 0);
             }
             if (isInRange) {
-                result = (intData > min & intData < max);
+                result = (intData >= min & intData <= max);
             }
         } catch (NullPointerException exception) {
             return result;
         } catch (ClassCastException exception) {
-            if (isRequired) {
-                result = !(data.toString().equals("null"));
-            }
             int intData = Integer.parseInt(data.toString());
             if (isPositive) {
                 result = (intData > 0);
             }
             if (isInRange) {
-                result = (intData > min & intData < max);
+                result = (intData >= min & intData <= max);
             }
         }
         return result;
