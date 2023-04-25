@@ -20,7 +20,7 @@ public class NumberSchema extends BaseSchema {
                 result = ((int) data > min & (int) data < max);
             }
         } catch (NullPointerException exception) {
-            return true;
+            return result;
         }
         return result;
     }
