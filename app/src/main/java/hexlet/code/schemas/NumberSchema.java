@@ -8,12 +8,13 @@ public class NumberSchema extends BaseSchema {
     public boolean isValid(Object data) {
         boolean result = true;
         try {
-            return super.isValid(data);
+            result = super.isValid(data);
         } catch (NullPointerException exception) {
             return result;
         } catch (ClassCastException exception) {
             return false;
         }
+        return result;
     }
     public final NumberSchema required() {
         addCheck("required",
