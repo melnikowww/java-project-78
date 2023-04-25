@@ -1,44 +1,33 @@
 package hexlet.code.schemas;
 
+
+import java.util.Objects;
+
 public class NumberSchema extends BaseSchema {
-    private boolean isRequired = false;
-    private boolean isPositive = false;
-    private boolean isInRange = false;
-    private int min;
-    private int max;
     @Override
-    public final boolean isValid(Object data) {
+    public boolean isValid(Object data) {
         boolean result = true;
         try {
-            if (isRequired) {
-                result = !(data == null);
-            }
-            int intData = (int) data;
-            if (isPositive) {
-                result = (intData > 0);
-            }
-            if (isInRange) {
-                result = (intData >= min & intData <= max);
-            }
+            return super.isValid(data);
         } catch (NullPointerException exception) {
             return result;
         } catch (ClassCastException exception) {
             return false;
         }
-        return result;
     }
     public final NumberSchema required() {
-        this.isRequired = true;
+        addCheck("required",
+            Objects::nonNull);
         return this;
     }
     public final NumberSchema positive() {
-        this.isPositive = true;
+        addCheck("positive",
+            value -> (int) value > 0);
         return this;
     }
     public final NumberSchema range(int a1, int a2) {
-        this.isInRange = true;
-        this.min = a1;
-        this.max = a2;
+        addCheck("range",
+            value -> (int) value >= a1 && (int) value <= a2);
         return this;
     }
 }

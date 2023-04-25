@@ -1,45 +1,34 @@
 package hexlet.code.schemas;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 
 public class MapSchema extends BaseSchema {
-    private boolean isRequired;
-    private boolean isSizeOf;
-    private boolean isValueValid;
-    private int size;
-    private Map<String, BaseSchema> mapWithRules = new HashMap<>();
     @Override
     public final boolean isValid(Object data) {
-        boolean result = true;
-        Map<String, Object> map = (Map<String, Object>) data;
-        if (isRequired) {
-            result = (data != null);
-        }
-        if (isSizeOf) {
-            result = (map.size() == this.size);
-        }
-        if (isValueValid) {
-            for (String key: map.keySet()) {
-                if (!mapWithRules.get(key).isValid(map.get(key))) {
-                    result = false;
-                }
-            }
-        }
-        return result;
+        return super.isValid(data);
     }
     public final MapSchema required() {
-        this.isRequired = true;
+        addCheck("required",
+            Objects::nonNull);
         return this;
     }
     public final MapSchema sizeof(int sizeRule) {
-        this.isSizeOf = true;
-        this.size = sizeRule;
+        addCheck("sizeof",
+            value -> ((Map<String, Object>) value).size() == sizeRule);
         return this;
     }
     public final void shape(Map<String, BaseSchema> rulesMap) {
-        this.isValueValid = true;
-        this.mapWithRules = rulesMap;
+        addCheck("shape",
+            value -> {
+                boolean result = true;
+                for (String key: ((Map<String, Object>) value).keySet()) {
+                    if (!rulesMap.get(key).isValid(((Map<String, Object>) value).get(key))) {
+                        result = false;
+                    }
+                }
+                return result;
+            });
     }
 }
