@@ -1,28 +1,22 @@
 package hexlet.code.schemas;
 
 
+import java.util.Objects;
+
 public class NumberSchema extends BaseSchema {
     @Override
     public boolean isValid(Object data) {
-        if (data instanceof Integer || data == null) {
-            System.out.print(data);
-            System.out.println(checks.keySet());
-            try {
-                return super.isValid(data);
-            } catch (NullPointerException exception) {
-//                System.out.println("NPE");
-                return true;
-            } catch (ClassCastException exception) {
-//                System.out.println("ClassCastException");
-                return false;
-            }
-        } else {
+        try {
+            return super.isValid(data);
+        } catch (NullPointerException exception) {
+            return true;
+        } catch (ClassCastException exception) {
             return false;
         }
     }
     public final NumberSchema required() {
         addCheck("required",
-            value -> value != null);
+            Objects::nonNull);
         return this;
     }
     public final NumberSchema positive() {

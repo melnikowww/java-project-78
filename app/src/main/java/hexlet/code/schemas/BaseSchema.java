@@ -11,6 +11,10 @@ public abstract class BaseSchema {
     }
     public boolean isValid(Object data) {
         for (Predicate predicate : checks.values()) {
+            if (checks.containsKey("required")
+                && !checks.get("required").test(data)) {
+                return false;
+            }
             if (!predicate.test(data)) {
                 return false;
             }
