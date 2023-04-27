@@ -5,16 +5,17 @@ public class NumberSchema extends BaseSchema {
     @Override
     public boolean isValid(Object data) {
         boolean result = true;
-        if (data instanceof String) {
-            return false;
-        }
-        try {
-            return super.isValid(data);
-        } catch (NullPointerException exception) {
-            System.out.println("NPE");
-            return result;
-        } catch (ClassCastException exception) {
-            System.out.println("ClassCastException");
+        if (data instanceof Integer || data == null) {
+            try {
+                return super.isValid(data);
+            } catch (NullPointerException exception) {
+//                System.out.println("NPE");
+                return result;
+            } catch (ClassCastException exception) {
+//                System.out.println("ClassCastException");
+                return false;
+            }
+        } else {
             return false;
         }
     }
