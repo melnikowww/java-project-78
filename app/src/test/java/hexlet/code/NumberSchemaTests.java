@@ -29,8 +29,6 @@ public class NumberSchemaTests {
     }
     @Test
     public void testNumberValidator() {
-        Validator v = new Validator();                              //44
-        NumberSchema schema = v.number();
 
         assertThat(schema.isValid(5)).isTrue();
         assertThat(schema.isValid(null)).isTrue();
