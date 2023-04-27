@@ -4,7 +4,8 @@ package hexlet.code.schemas;
 public class NumberSchema extends BaseSchema {
     @Override
     public boolean isValid(Object data) {
-        System.out.println(data);
+        System.out.print(data);
+        System.out.println(checks.keySet());
         if (data instanceof Integer || data == null) {
             try {
                 return super.isValid(data);
