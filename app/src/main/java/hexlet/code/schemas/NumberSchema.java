@@ -1,12 +1,13 @@
 package hexlet.code.schemas;
 
 
-import java.util.Objects;
-
 public class NumberSchema extends BaseSchema {
     @Override
     public boolean isValid(Object data) {
         boolean result = true;
+        if (data instanceof String) {
+            return false;
+        }
         try {
             return super.isValid(data);
         } catch (NullPointerException exception) {
@@ -19,7 +20,7 @@ public class NumberSchema extends BaseSchema {
     }
     public final NumberSchema required() {
         addCheck("required",
-            Objects::nonNull);
+            value -> value != null);
         return this;
     }
     public final NumberSchema positive() {
