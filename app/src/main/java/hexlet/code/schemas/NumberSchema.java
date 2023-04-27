@@ -4,11 +4,12 @@ package hexlet.code.schemas;
 public class NumberSchema extends BaseSchema {
     @Override
     public boolean isValid(Object data) {
+        System.out.println(data);
         if (data instanceof Integer || data == null) {
             try {
                 return super.isValid(data);
             } catch (NullPointerException exception) {
-                System.out.println("NPE: " + data);
+                System.out.println("NPE");
                 return true;
             } catch (ClassCastException exception) {
 //                System.out.println("ClassCastException");
