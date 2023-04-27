@@ -11,6 +11,8 @@ public class BaseSchema {
     }
     /**
      * Base validation
+     * @param data is data which needs to be validated
+     * @return boolean result
      */
     protected boolean isValid(Object data) {
         for (Predicate predicate : checks.values()) {
