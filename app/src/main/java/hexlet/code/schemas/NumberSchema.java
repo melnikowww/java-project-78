@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class NumberSchema extends BaseSchema {
     @Override
-    public boolean isValid(Object data) {
+    public final boolean isValid(Object data) {
         try {
             return super.isValid(data);
         } catch (NullPointerException exception) {
