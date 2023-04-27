@@ -10,7 +10,7 @@ public class BaseSchema {
         checks.put(name, predicate);
     }
     /**
-     * Base validation
+     * Base validation.
      * @param data is data which needs to be validated
      * @return boolean result
      */
