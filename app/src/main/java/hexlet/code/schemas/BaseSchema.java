@@ -10,6 +10,8 @@ public abstract class BaseSchema {
         checks.put(name, predicate);
     }
     public boolean isValid(Object data) {
+        System.out.print(data + " ");
+        System.out.println(checks.keySet());
         for (Predicate predicate : checks.values()) {
             if (!predicate.test(data)) {
                 return false;

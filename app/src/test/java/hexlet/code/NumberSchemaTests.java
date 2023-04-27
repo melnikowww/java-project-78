@@ -27,5 +27,6 @@ public class NumberSchemaTests {
         assertThat(schema.isValid(-2)).isFalse();
         makeSchema();
         assertThat(schema.isValid("2")).isFalse();
+        assertThat(schema.positive().isValid(-5)).isFalse();
     }
 }
