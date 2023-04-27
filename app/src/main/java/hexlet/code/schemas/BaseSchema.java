@@ -9,6 +9,9 @@ public class BaseSchema {
     protected final void addCheck(String name, Predicate predicate) {
         checks.put(name, predicate);
     }
+    /**
+     * Base validation
+     */
     protected boolean isValid(Object data) {
         for (Predicate predicate : checks.values()) {
             if (checks.containsKey("required")
