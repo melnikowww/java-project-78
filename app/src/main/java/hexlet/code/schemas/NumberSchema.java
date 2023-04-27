@@ -10,7 +10,7 @@ public class NumberSchema extends BaseSchema {
                 return super.isValid(data);
             } catch (NullPointerException exception) {
 //                System.out.println("NPE");
-                return result;
+                return true;
             } catch (ClassCastException exception) {
 //                System.out.println("ClassCastException");
                 return false;
