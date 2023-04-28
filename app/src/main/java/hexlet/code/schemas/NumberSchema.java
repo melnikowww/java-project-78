@@ -1,9 +1,6 @@
 package hexlet.code.schemas;
 
 public class NumberSchema extends BaseSchema {
-    public final boolean isValid(Object data) {
-        return super.isValid(data);
-    }
 
     public final NumberSchema required() {
         addCheck("required",

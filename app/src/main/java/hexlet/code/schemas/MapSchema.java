@@ -3,9 +3,6 @@ package hexlet.code.schemas;
 import java.util.Map;
 
 public class MapSchema extends BaseSchema {
-    public final boolean isValid(Object data) {
-        return super.isValid(data);
-    }
     public final MapSchema required() {
         addCheck("required",
             value -> value instanceof Map);
