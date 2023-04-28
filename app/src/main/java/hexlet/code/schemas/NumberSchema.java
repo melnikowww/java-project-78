@@ -1,22 +1,14 @@
 package hexlet.code.schemas;
 
-
-import java.util.Objects;
-
 public class NumberSchema extends BaseSchema {
     @Override
-    public final boolean isValid(Object data) {
-        try {
-            return super.isValid(data);
-        } catch (NullPointerException exception) {
-            return true;
-        } catch (ClassCastException exception) {
-            return false;
-        }
+    public boolean isValid(Object data) {
+        return super.isValid(data);
     }
+
     public final NumberSchema required() {
         addCheck("required",
-            Objects::nonNull);
+            value -> value instanceof Integer);
         return this;
     }
     public final NumberSchema positive() {

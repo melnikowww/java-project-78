@@ -1,8 +1,6 @@
 package hexlet.code.schemas;
 
 import java.util.Map;
-import java.util.Objects;
-
 
 public class MapSchema extends BaseSchema {
     @Override
@@ -11,7 +9,7 @@ public class MapSchema extends BaseSchema {
     }
     public final MapSchema required() {
         addCheck("required",
-            Objects::nonNull);
+            value -> value instanceof Map);
         return this;
     }
     public final MapSchema sizeof(int sizeRule) {
