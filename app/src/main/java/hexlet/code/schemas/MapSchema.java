@@ -3,7 +3,6 @@ package hexlet.code.schemas;
 import java.util.Map;
 
 public class MapSchema extends BaseSchema {
-    @Override
     public final boolean isValid(Object data) {
         return super.isValid(data);
     }

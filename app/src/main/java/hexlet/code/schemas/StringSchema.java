@@ -2,7 +2,6 @@ package hexlet.code.schemas;
 
 
 public class StringSchema extends BaseSchema {
-    @Override
     public final boolean isValid(Object data) {
         return super.isValid(data);
     }

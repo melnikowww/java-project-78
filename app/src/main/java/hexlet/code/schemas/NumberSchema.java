@@ -1,7 +1,6 @@
 package hexlet.code.schemas;
 
 public class NumberSchema extends BaseSchema {
-    @Override
     public boolean isValid(Object data) {
         return super.isValid(data);
     }
